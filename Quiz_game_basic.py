@@ -35,17 +35,16 @@ def quizoptions():
         radio.grid(row=1, column=i, padx=(20, 5), pady=5)
     def on_submit():
         global final_score
-        correct_answer = var
+        correct_answer = var  
         user_answer = selected_radio.get()
-        if user_answer == correct_answer:
-            final_score += 1
-            messagebox.showinfo("Feedback", "Correct! Well done!")
-        else:
-            messagebox.showinfo("Feedback", f"Sorry, the correct answer is {chr(64 + correct_answer)}. Better luck next time.")
-
         if selected_radio.get() == 0:
-            messagebox.showwarning("Warning", "Please select an option before submitting.")
+                messagebox.showwarning("Warning", "Please select an option before submitting.")
         else:
+            if user_answer == correct_answer:
+                final_score += 1
+                messagebox.showinfo("Feedback", "Correct! Well done!")
+            else:
+                messagebox.showinfo("Feedback", f"Sorry, the correct answer is {chr(64 + correct_answer)}. Better luck next time.")
             root.destroy()
     submit_button = Button(root, text="S U B M I T", command=on_submit, width=10, height=2,bg='#FF0080',font=("Comic Sans MS", 14,"bold"),relief=SOLID,justify=CENTER)
     submit_button.grid(row=2, column=0, columnspan=4, pady=10)
